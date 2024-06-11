@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "SurveyResponse";
+}
+
+
+
+<div class="form-horizontal">
+
+    @ViewBag.error
+
+    <span class="badge badge-danger">@ViewBag.error</span>
+
+    <h1>_surveys</h1>
+    <ul>
+
+        <li><a href="~/Survey/Create">FILL OUT SURVEY</a></li>
+        <li><a href="~/Survey/SurveyResponse">VIEW SURVEY RESULTS</a></li>
+    </ul>
+    <div class="table table-borderless">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Total number of surveys:</td>
+                    <td>@ViewBag.Total</td>
+                </tr>
+                <tr>
+                    <td>Avarage Age:</td>
+                    <td>@ViewBag.AvgAge</td>
+                </tr>
+                <tr>
+                    <td>Oldest person who participated:</td>
+                    <td>@ViewBag.MaxAge</td>
+                </tr>
+                <tr>
+                    <td>Youngest person who participated:</td>
+                    <td>@ViewBag.MinAge</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div class="table table-borderless">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Percentage of people who like pizza:</td>
+                    <td>@ViewBag.AvgPizza%</td>
+                </tr>
+                <tr>
+                    <td>Percentage of people who like Pasta:</td>
+                    <td>@ViewBag.Avgpasta%</td>
+                </tr>
+                <tr>
+                    <td>Percentage of people who like Pap and Wors:</td>
+                    <td>@ViewBag.AvgPw%</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="table table-borderless">
+        <table>
+            <tbody>
+                <tr>
+                    <td>People who like to watch movies:</td>
+                    <td>@ViewBag.AvgMv</td>
+                </tr>
+                <tr>
+                    <td>People who like to listen to radio:</td>
+                    <td>@ViewBag.Avgrd</td>
+                </tr>
+                <tr>
+                    <td>People who like to eat out:</td>
+                    <td>@ViewBag.AvgEO</td>
+                </tr>
+                <tr>
+                    <td>People who like to watch TV:</td>
+                    <td>@ViewBag.AvgWtv</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+    

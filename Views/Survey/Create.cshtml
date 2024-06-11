@@ -1,0 +1,259 @@
+﻿@model SurveyQuesion.Models.Survey
+
+
+<body>
+    @{
+        ViewBag.Title = "Create";
+    }
+
+   
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+    <div class="form-horizontal">
+        <h1>_surveys</h1>
+        <ul>
+
+            <li><a href="~/Survey/Create">FILL OUT SURVEY</a></li>
+            <li><a href="~/Survey/SurveyResponse">VIEW SURVEY RESULTS</a></li>
+        </ul>
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        
+    <div class="row justify-content-md-center">
+        <div class="containter">
+            <p>Personal Details:</p>
+        </div>
+        <div class="col-md-5">
+            
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.FullNames, "Full Names")
+                @Html.EditorFor(model => model.FullNames, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FullNames, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email)
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger" })
+               
+                
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DateOfBirth)
+                @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Contact)
+                @Html.EditorFor(model => model.Contact, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Contact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+                
+
+
+            <br />
+            <div class="table table-borderless">
+                <table>
+
+                    <tr>
+                        <td>What is your favourite food?</td>
+
+                        <td>
+                            <div>
+                                @Html.CheckBoxFor(model => Model.Food1, new { htmlAttributes = new { @class = "form-control" } })
+
+                                @Html.LabelFor(model => Model.Food1, "Pizza")
+  
+                            </div>
+                           
+
+                        </td>
+
+                        <td>
+                            @Html.CheckBoxFor(model => Model.Food2)
+                            @Html.LabelFor(model => Model.Food2, "Pasta")
+                            @Html.ValidationMessageFor(model => model.Food2, "", new { @class = "text-danger" })
+
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(model => Model.Food3)
+                            @Html.LabelFor(model => Model.Food3, "Pap and Wors")
+                            @Html.ValidationMessageFor(model => model.Food3, "", new { @class = "text-danger" })
+
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(model => Model.Food4)
+                            @Html.LabelFor(model => Model.Food4, "Other")
+                            @Html.ValidationMessageFor(model => model.Food1, "", new { @class = "text-danger" })
+
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <br />
+            <p> Please rate your level of agreement on a scale grom 1 to 5, with 1 being "strongly agree"and 5 being"strongly disagree"</p>
+
+            <div class="table-bordered">
+                <table>
+
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td>Strongly Agree</td>
+                            <td>Agree</td>
+                            <td>Neutral</td>
+                            <td>Disagree</td>
+                            <td>Strongly Disgree</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>i like to watch movies</td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="Movie" value="1">
+
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="Movie" value="2">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="Movie" value="3">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="Movie" value="4">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="Movie" value="5">
+                                </label>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>i like to listen to radio</td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="Radio" value="1">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="Radio" value="2">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="Radio" value="3">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="Radio" value="4">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="Radio" value="5">
+                                </label>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>i like to eat out</td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="EatOut" value="1" class="radio-container">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="EatOut" value="2">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="EatOut" value="3">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="EatOut" value="4">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="EatOut" value="5">
+                                </label>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>i like to watch TV</td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="TV" value="1">
+
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="TV" value="2">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="TV" value="3">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="TV" value="4">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" name="TV" value="5">
+                                </label>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-9">
+                    <input type="submit" value="Create" class="btn btn-primary w-100" />
+                </div>
+            </div>
+        </div>
+        }
+</body>
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
