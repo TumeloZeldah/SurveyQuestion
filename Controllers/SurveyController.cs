@@ -34,7 +34,8 @@ namespace SurveyQuesion.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,FullNames,Email,DateOfBirth,Contact,Foods,Movies,Radio,EatOut,TV,Food1,Food2,Food3,Food4")] Survey survey)
         {
-            int ratingMv = survey.Movies;// to make the checkbox an integer when insrted on a database
+            // to make the checkbox an integer when insrted on a database
+            int ratingMv = survey.Movies;
             int ratingRadio = survey.Radio;
             int ratingEO = survey.EatOut;
             int ratingTV = survey.TV;    
@@ -59,15 +60,15 @@ namespace SurveyQuesion.Controllers
             }
             else
             {
-                int TotalAge = 0;
-                int TruePizza = viewModel.Where(s => s.Food1).Count();//convert the boolean to int
-                int TruePasta = viewModel.Where(s => s.Food2).Count();
-                int TruePW = viewModel.Where(s => s.Food3).Count();
-                var RateM = viewModel.Select(s => s.Movies).ToList();
-                Decimal sumMovie = 0;
-                Decimal sumRadio = 0;
-                Decimal sumEatOut = 0;
-                Decimal sumWtv = 0;
+                double TotalAge = 0;
+                double TruePizza = viewModel.Where(s => s.Food1).Count();//convert the boolean to int
+                double TruePasta = viewModel.Where(s => s.Food2).Count();
+                double TruePW = viewModel.Where(s => s.Food3).Count();
+              
+                double sumMovie = 0;
+                double sumRadio = 0;
+                double sumEatOut = 0;
+                double sumWtv = 0;
                 int minAge = int.MaxValue; // is for a large value
                 int maxAge = int.MinValue; // is for a small data          
                 foreach (var item in viewModel)
@@ -88,19 +89,19 @@ namespace SurveyQuesion.Controllers
                     {
                         maxAge = age;
                     }
-                    sumMovie += item.Movies;//get the sum of each item 
+                    sumMovie += item.Movies;
                     sumRadio += item.Radio;
                     sumEatOut += item.EatOut;
                     sumWtv += item.TV;
                 }
-                Decimal avarageTv = (Decimal)sumWtv / viewModel.Count;
-                Decimal avarageEO = (Decimal)sumEatOut / viewModel.Count;
-                Decimal avarageR = (Decimal)sumRadio / viewModel.Count;
-                Decimal avarageMv = (Decimal)sumMovie / viewModel.Count;
-                Decimal avaragePW = (Decimal)TruePW / viewModel.Count * 100;
-                Decimal avaragePasta = (Decimal)TruePasta / viewModel.Count * 100;
-                Decimal avaragePizza = (Decimal)TruePizza / viewModel.Count * 100;
-                Decimal averageAge = (Decimal)TotalAge / viewModel.Count;
+                double avarageTv = Math.Round(sumWtv / viewModel.Count,2);
+                double avarageEO = Math.Round(sumEatOut / viewModel.Count,2);
+                double avarageR = Math.Round(sumRadio / viewModel.Count,2);
+                double avarageMv = Math.Round(sumMovie / viewModel.Count,2);
+                double avaragePW = Math.Round(TruePW / viewModel.Count * 100,2);
+                double avaragePasta = Math.Round(TruePasta / viewModel.Count * 100,2);
+                double avaragePizza = Math.Round(TruePizza / viewModel.Count * 100,2);
+                double averageAge = Math.Round(TotalAge / viewModel.Count,2);
                 ViewBag.Total = viewModel.Count;
                 ViewBag.AvgAge = averageAge;
                 ViewBag.MinAge = minAge;
